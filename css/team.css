@@ -1,0 +1,57 @@
+/* ===== Team / Trombinoscope ===== */
+.team-section {
+    background: var(--bg-alt);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 28px;
+}
+
+.team-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.team-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    background: hsl(var(--hue, 210), 70%, 55%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px hsla(var(--hue, 210), 70%, 45%, 0.3);
+}
+
+.team-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+}
+
+.team-role {
+    display: inline-block;
+    padding: 4px 14px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.team-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
