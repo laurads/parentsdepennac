@@ -98,21 +98,7 @@
     font-style: italic;
 }
 
-.hero-cta {
-    display: inline-block;
-    padding: 14px 32px;
-    background: white;
-    color: var(--primary);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.05rem;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.hero-cta:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    background: var(--primary-light);
+.hero-helloasso {
+    max-width: 320px;
+    margin: 0 auto;
 }
