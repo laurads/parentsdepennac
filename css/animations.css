@@ -14,11 +14,13 @@
 .action-card:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
 .action-card:nth-child(4).animate-on-scroll { transition-delay: 0.3s; }
 
-.team-card:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
-.team-card:nth-child(3).animate-on-scroll { transition-delay: 0.15s; }
-.team-card:nth-child(4).animate-on-scroll { transition-delay: 0.2s; }
-.team-card:nth-child(5).animate-on-scroll { transition-delay: 0.25s; }
-.team-card:nth-child(6).animate-on-scroll { transition-delay: 0.3s; }
+.team-card:nth-child(n+2).animate-on-scroll { transition-delay: calc((var(--i, 0)) * 0.05s); }
+
+.news-card:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
+.news-card:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
+
+.partner-card:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
+.partner-card:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
@@ -92,6 +94,11 @@
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -110,5 +117,19 @@
 
     .contact-form {
         padding: 24px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .team-card {
+        padding: 20px 12px;
+    }
+
+    .team-avatar {
+        width: 80px;
+        height: 80px;
     }
 }
