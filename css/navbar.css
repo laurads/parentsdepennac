@@ -28,7 +28,7 @@
 .nav-logo {
     font-size: 1.25rem;
     font-weight: 700;
-    color: white;
+    color: #1a1a1a;
     text-decoration: none;
     transition: var(--transition);
 }
@@ -45,7 +45,7 @@
 
 .nav-links a {
     text-decoration: none;
-    color: rgba(255,255,255,0.9);
+    color: #1a1a1a;
     padding: 8px 16px;
     border-radius: 8px;
     font-weight: 500;
@@ -54,8 +54,8 @@
 }
 
 .nav-links a:hover {
-    background: rgba(255,255,255,0.15);
-    color: white;
+    background: rgba(99, 41, 187, 0.08);
+    color: #6329bb;
 }
 
 #navbar.scrolled .nav-links a {
@@ -80,7 +80,7 @@
 .nav-toggle span {
     width: 24px;
     height: 2px;
-    background: white;
+    background: #1a1a1a;
     transition: var(--transition);
     border-radius: 2px;
 }
