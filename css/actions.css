@@ -55,6 +55,11 @@
     color: var(--accent);
 }
 
+.badge-ending {
+    background: #fce4ec;
+    color: #c62828;
+}
+
 .action-card h3 {
     font-size: 1.25rem;
     margin-bottom: 8px;
@@ -122,4 +127,22 @@
     left: 0;
     color: var(--primary);
     font-weight: bold;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 10px 24px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    background: #5220a0;
+    box-shadow: 0 4px 15px rgba(99, 41, 187, 0.3);
 }

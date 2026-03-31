@@ -85,3 +85,36 @@
     color: var(--text-light);
     font-weight: 500;
 }
+
+/* Adhesion CTA */
+.about-adhesion {
+    text-align: center;
+    margin-top: 48px;
+}
+
+.about-adhesion-text {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.btn-adhesion {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--primary);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(99, 41, 187, 0.3);
+}
+
+.btn-adhesion:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 41, 187, 0.4);
+    background: #5220a0;
+}
