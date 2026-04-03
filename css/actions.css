@@ -129,6 +129,11 @@
     font-weight: bold;
 }
 
+.action-btn-wrapper {
+    text-align: center;
+    margin-top: auto;
+}
+
 .btn-action {
     display: inline-block;
     padding: 10px 24px;

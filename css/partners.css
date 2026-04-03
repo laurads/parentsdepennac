@@ -39,3 +39,10 @@
     font-size: 0.95rem;
     line-height: 1.7;
 }
+
+
+.partner-highlight {
+    margin-top: 8px;
+    font-weight: 600;
+    color: var(--text);
+}

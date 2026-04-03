@@ -56,6 +56,84 @@ function init() {
         window.location.href = `mailto:lesparentsdepennac@gmail.com?subject=${subject}&body=${body}`;
     });
 
+    // Carousel actions passées
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const btnPrev = carousel.querySelector('.carousel-btn-prev');
+        const btnNext = carousel.querySelector('.carousel-btn-next');
+        let currentIndex = 0;
+        let animating = false;
+
+        // Initialiser : seule la première slide est visible
+        slides[0].classList.add('active');
+
+        // Créer les dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        function goToSlide(index, reverse) {
+            if (animating || index === currentIndex) return;
+            animating = true;
+
+            const oldSlide = slides[currentIndex];
+            const newSlide = slides[index];
+
+            // Appliquer les classes d'animation
+            oldSlide.classList.remove('active');
+            oldSlide.classList.add('slide-exit');
+            newSlide.classList.add('slide-enter');
+            if (reverse) {
+                oldSlide.classList.add('reverse');
+                newSlide.classList.add('reverse');
+            }
+
+            // Mettre à jour les dots
+            dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+
+            // Nettoyer après l'animation
+            newSlide.addEventListener('animationend', function handler() {
+                newSlide.removeEventListener('animationend', handler);
+                oldSlide.classList.remove('slide-exit', 'reverse');
+                newSlide.classList.remove('slide-enter', 'reverse');
+                newSlide.classList.add('active');
+                currentIndex = index;
+                animating = false;
+            });
+        }
+
+        btnNext.addEventListener('click', () => {
+            const next = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+            goToSlide(next, false);
+        });
+
+        btnPrev.addEventListener('click', () => {
+            const prev = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+            goToSlide(prev, true);
+        });
+
+        // Swipe tactile
+        let touchStartX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        carousel.addEventListener('touchend', (e) => {
+            const diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? btnNext.click() : btnPrev.click();
+            }
+        });
+    }
+
     // Animation au scroll (Intersection Observer)
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
@@ -66,7 +144,7 @@ function init() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.action-card, .team-card, .about-text, .about-stats, .contact-form, .contact-info, .news-card, .partner-card').forEach(el => {
+    document.querySelectorAll('.action-card, .team-card, .about-text, .about-stats, .contact-form, .contact-info, .news-card, .partner-card, .carousel').forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
