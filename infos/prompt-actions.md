@@ -1,59 +1,85 @@
-# Prompt — Section "Nos Actions en Cours"
+# Prompt — Mise a jour de la section "Nos Actions en Cours"
 
-## Contexte
+## Objectif
 
-Tu travailles sur la section `sections/actions.html` du site statique de l'association "Les Parents de Pennac". Le contenu source est dans `infos/actions.txt`.
+Regenerer le fichier `sections/actions.html` a partir du contenu de `infos/actions.txt`. Le HTML produit doit respecter strictement la structure et les classes CSS decrites ci-dessous.
 
-## Contenu actuel à mettre à jour
+## Source de donnees
 
-La section affiche 4 cartes d'actions sous forme de grille. Chaque carte contient :
-- Un emoji représentatif
-- Un badge de statut (`Termine bientôt`, `En cours`, `À venir`)
-- Un titre
-- Une description
-- (Optionnel) Une liste de détails
-- (Optionnel) Une date avec icône calendrier
-- (Optionnel) Un bouton qui redirige vers un lien
+Le fichier `infos/actions.txt` contient les actions a afficher. Chaque action est separee par une ligne `-----------` et suit ce format :
 
-## Actions à afficher
+```
+[Emoji][Titre]
+Badge: [Statut]
+[Description sur une ou plusieurs lignes]
+[Optionnel] Lien: [URL] avec libelle "[Texte du bouton]"
+```
 
-### 1. 👕 Tabliers Personnalisés — Badge : `Termine bientôt`
-- Tabliers avec les dessins des enfants
-- Deux modèles : primaire et maternelle
-- Plusieurs tailles (adulte et enfant)
-- 4 coloris disponibles
+Les statuts possibles dans le fichier source sont : `En cours`, `A venir`, `Termine bientot`.
 
-### 2. 📚 Boîte à Livres — Badge : `En cours`
-- Rénovation d'une boîte à livres pour l'échange de livres
-- Mettre en avant l'économie circulaire et le partage
+## Structure HTML a produire
 
-### 3. 🌱 Opération semis — Badge : `En cours`
+### Squelette global
 
-### 4. 🎨 Banc de l'amitié : `À venir`
-- Rénovation d'une boîte à livres pour l'échange de livres
-- Mettre en avant l'économie circulaire et le partage
+```html
+<section id="actions" class="section actions-section">
+    <div class="container">
+        <h2 class="section-title">Nos Actions en Cours</h2>
+        <p class="section-subtitle">Decouvrez les projets et initiatives que nous menons pour l'ecole Daniel Pennac.</p>
 
-### 5. 🎉 Fête de l'École 2026 — Badge : `À venir`
-- Date : **23 juin 2026** à la Guérinière
-- Jeux pour les enfants dans la journée :
-  - PS au CE1 : le matin et en début d'après-midi
-  - CE2 au CM2 : l'après-midi
-- Goûter partagé avec toutes les familles de 16h45 à 19h45
-- Ajouter un appel à l'aide bénévole : "Vous souhaitez nous aider ? Remplissez le formulaire ci-joint pour la journée, et utilisez le second formulaire pour nous indiquer votre participation au goûter partagé."
-- **TODO** : Ajouter les liens vers les formulaires quand ils seront disponibles
+        <div class="actions-grid">
+            <!-- Une <article class="action-card"> par action -->
+        </div>
+    </div>
+</section>
+```
 
-### 6. 🛏️ Bourse aux draps/chaussons — Badge : `À venir`
+### Structure d'une carte action
 
-## Consignes
+```html
+<article class="action-card">
+    <div class="action-emoji">[EMOJI]</div>
+    <span class="action-badge [CLASSE_BADGE]">[TEXTE_BADGE]</span>
+    <h3>[TITRE]</h3>
+    <p>[DESCRIPTION]</p>
+    <!-- Si un lien est present : -->
+    <div class="action-btn-wrapper">
+        <a href="[URL]" target="_blank" rel="noopener" class="btn-action">[LIBELLE]</a>
+    </div>
+</article>
+```
 
-- Garder le même format de cartes (`.action-card`)
-- Les badges utilisent les classes : `.action-badge` (défaut = "En cours"), `.badge-active` ("Termine bientôt"), `.badge-upcoming` ("À venir")
-- Le contenu doit rester concis sur les cartes, pas de texte trop long
-- Les actions doivent être mises à jour régulièrement : penser à changer les badges et retirer les actions terminées
-- Fichier CSS associé : `css/actions.css`
+## Mapping des badges
 
-## Notes pour les futures mises à jour
+| Statut dans `actions.txt` | Classe CSS           | Texte affiche     | Couleur     |
+|---------------------------|----------------------|-------------------|-------------|
+| `En cours`                | `badge-active`       | En cours          | Vert        |
+| `A venir`                 | `badge-upcoming`     | A venir           | Orange      |
+| `Termine bientot`         | `badge-ending`       | Termine bientot   | Rouge       |
 
-- Quand une action est terminée, la retirer
-- De nouvelles actions peuvent être ajoutées (ventes, événements, projets pédagogiques...)
-- Penser à mettre à jour cette liste à chaque trimestre
+## Regles
+
+1. **Lire `infos/actions.txt`** comme unique source de verite pour le contenu.
+2. **Une carte par action** dans l'ordre du fichier source.
+3. **Description** : reprendre le texte tel quel, sur une seule balise `<p>`. Fusionner les lignes multiples en un seul paragraphe.
+4. **Bouton optionnel** : n'ajouter le bloc `.action-btn-wrapper` que si la ligne `Lien:` est presente.
+5. **Pas de contenu en dur** : ne rien inventer, ne rien ajouter qui ne soit pas dans le fichier source.
+6. **Pas de modification CSS** : le fichier `css/actions.css` ne doit pas etre modifie.
+7. **Conserver le titre et sous-titre** de la section tels quels (voir squelette global ci-dessus).
+8. **Encodage** : le fichier HTML doit etre en UTF-8, les accents et emojis doivent etre presents directement dans le HTML (pas d'entites HTML).
+
+## Fichiers concernes
+
+| Fichier | Role |
+|---------|------|
+| `infos/actions.txt` | Source du contenu (lecture seule) |
+| `sections/actions.html` | Fichier a regenerer |
+| `css/actions.css` | Styles (ne pas modifier) |
+
+## Exemple de workflow
+
+1. Lire `infos/actions.txt`
+2. Parser chaque bloc separe par `-----------`
+3. Pour chaque bloc, extraire : emoji, titre, badge, description, lien optionnel
+4. Generer le HTML en suivant la structure decrite
+5. Ecrire le resultat dans `sections/actions.html`
