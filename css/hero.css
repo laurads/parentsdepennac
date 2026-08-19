@@ -66,4 +66,86 @@
     filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.15));
 }
 
+/* ===== Bulle de rappel adhésion ===== */
+.hero-bubble {
+    position: relative;
+    display: block;
+    max-width: 250px;
+    text-align: left;
+    background: white;
+    border-radius: 20px;
+    padding: 18px 22px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-bubble:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Queue de la bulle, pointée vers le caméléon */
+.hero-bubble::before {
+    content: "";
+    position: absolute;
+    left: -14px;
+    top: 30px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid white;
+}
+
+.hero-bubble-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 4px;
+}
+
+.hero-bubble-text {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--text);
+}
+
+.hero-bubble-cta {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hero-bubble:hover .hero-bubble-cta {
+    background: var(--primary-dark);
+}
+
+@media (max-width: 600px) {
+    .hero-bottom {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .hero-bubble {
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .hero-bubble::before {
+        left: 50%;
+        top: -14px;
+        transform: translateX(-50%);
+        border-top: none;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 15px solid white;
+    }
+}
+
 

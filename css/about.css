@@ -1,4 +1,8 @@
 /* ===== About ===== */
+.about-section {
+    background: var(--bg);
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
