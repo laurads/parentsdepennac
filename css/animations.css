@@ -18,9 +18,14 @@
 
 .news-card:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
 .news-card:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
+.news-card:nth-child(4).animate-on-scroll { transition-delay: 0.3s; }
+.news-card:nth-child(5).animate-on-scroll { transition-delay: 0.4s; }
 
 .partner-card:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
 .partner-card:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
+
+.supplies-item:nth-child(2).animate-on-scroll { transition-delay: 0.1s; }
+.supplies-item:nth-child(3).animate-on-scroll { transition-delay: 0.2s; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {

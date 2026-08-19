@@ -1,0 +1,175 @@
+/* ===== Fournitures scolaires ===== */
+.supplies-section {
+    background: var(--bg-alt);
+}
+
+.supplies-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    max-width: 820px;
+    margin: -30px auto 40px;
+    padding: 18px 22px;
+    background: var(--primary-light);
+    border-radius: var(--radius);
+}
+
+.supplies-note-emoji {
+    font-size: 1.4rem;
+    line-height: 1.3;
+}
+
+.supplies-note p {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.supplies-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.supplies-item {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.supplies-item[open] {
+    box-shadow: var(--shadow-lg);
+}
+
+.supplies-item summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.supplies-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.supplies-item summary:hover {
+    background: var(--bg-alt);
+}
+
+.supplies-item summary:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.supplies-emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.supplies-level {
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.supplies-level small {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+/* Chevron */
+.supplies-item summary::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-right: 2.5px solid var(--primary);
+    border-bottom: 2.5px solid var(--primary);
+    transform: rotate(45deg);
+    transition: transform var(--transition);
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+.supplies-item[open] summary::after {
+    transform: rotate(-135deg);
+}
+
+.supplies-content {
+    padding: 4px 24px 28px;
+    border-top: 1px solid #eee8f6;
+}
+
+.supplies-content h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+    margin: 22px 0 8px;
+}
+
+.supplies-content h4 small {
+    display: block;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.supplies-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.supplies-content li {
+    position: relative;
+    padding: 5px 0 5px 22px;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.supplies-content li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 13px;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--secondary);
+}
+
+.supplies-content strong {
+    color: var(--text);
+}
+
+.supplies-download {
+    text-align: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 480px) {
+    .supplies-item summary {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .supplies-content {
+        padding: 4px 16px 24px;
+    }
+
+    .supplies-level {
+        font-size: 1.05rem;
+    }
+}

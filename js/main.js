@@ -144,7 +144,7 @@ function init() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.action-card, .team-card, .about-text, .about-stats, .contact-form, .contact-info, .news-card, .partner-card, .carousel').forEach(el => {
+    document.querySelectorAll('.action-card, .team-card, .about-text, .about-stats, .contact-form, .contact-info, .news-card, .partner-card, .carousel, .supplies-item').forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
