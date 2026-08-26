@@ -5,6 +5,14 @@
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G"/>
       <feGaussianBlur stdDeviation="12"/>
     </filter>
+    <!-- Halo central : éclaircit le centre pour laisser respirer le titre -->
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.68">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.96"/>
+      <stop offset="0.46" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="0.66" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="0.85" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
   <!-- Fond papier quadrillé -->
@@ -19,23 +27,23 @@
 
   <!-- Taches aquarelle aux coins et bords -->
   <!-- Violet haut gauche -->
-  <ellipse cx="80" cy="80" rx="280" ry="220" fill="#6329bb" opacity="0.3" filter="url(#wc)"/>
+  <ellipse cx="40" cy="40" rx="300" ry="240" fill="#6329bb" opacity="0.38" filter="url(#wc)"/>
   <!-- Rose haut gauche/centre -->
-  <ellipse cx="350" cy="150" rx="250" ry="200" fill="#ef17b3" opacity="0.25" filter="url(#wc)"/>
+  <ellipse cx="270" cy="50" rx="260" ry="190" fill="#ef17b3" opacity="0.32" filter="url(#wc)"/>
   <!-- Orange haut droite -->
-  <ellipse cx="1400" cy="100" rx="300" ry="230" fill="#fd9804" opacity="0.3" filter="url(#wc)"/>
+  <ellipse cx="1450" cy="60" rx="320" ry="240" fill="#fd9804" opacity="0.38" filter="url(#wc)"/>
   <!-- Rose bas gauche -->
-  <ellipse cx="200" cy="780" rx="320" ry="250" fill="#ef17b3" opacity="0.3" filter="url(#wc)"/>
+  <ellipse cx="150" cy="840" rx="330" ry="250" fill="#ef17b3" opacity="0.36" filter="url(#wc)"/>
   <!-- Bleu bas droite -->
-  <ellipse cx="1400" cy="750" rx="300" ry="280" fill="#0ab6c9" opacity="0.3" filter="url(#wc)"/>
+  <ellipse cx="1460" cy="820" rx="310" ry="270" fill="#0ab6c9" opacity="0.36" filter="url(#wc)"/>
   <!-- Vert clair droite -->
-  <ellipse cx="1550" cy="400" rx="200" ry="250" fill="#7fda19" opacity="0.2" filter="url(#wc)"/>
+  <ellipse cx="1590" cy="420" rx="200" ry="270" fill="#7fda19" opacity="0.3" filter="url(#wc)"/>
   <!-- Vert foncé bas centre -->
-  <ellipse cx="700" cy="850" rx="250" ry="180" fill="#43ab51" opacity="0.2" filter="url(#wc)"/>
+  <ellipse cx="660" cy="920" rx="270" ry="180" fill="#43ab51" opacity="0.3" filter="url(#wc)"/>
   <!-- Violet bas droite -->
-  <ellipse cx="1200" cy="800" rx="200" ry="180" fill="#6329bb" opacity="0.2" filter="url(#wc)"/>
+  <ellipse cx="1230" cy="880" rx="210" ry="180" fill="#6329bb" opacity="0.3" filter="url(#wc)"/>
   <!-- Orange gauche -->
-  <ellipse cx="50" cy="450" rx="180" ry="200" fill="#fd9804" opacity="0.2" filter="url(#wc)"/>
+  <ellipse cx="10" cy="450" rx="190" ry="230" fill="#fd9804" opacity="0.3" filter="url(#wc)"/>
 
   <!-- Petites éclaboussures -->
   <circle cx="300" cy="300" r="8" fill="#ef17b3" opacity="0.4"/>
@@ -276,4 +284,7 @@
     <path d="M60 500 Q70 490 80 500 Q90 510 80 520 Q70 530 60 520 Q50 510 60 498"/>
 
   </g>
+
+  <!-- Voile blanc central : les couleurs restent en couronne, le centre reste lisible -->
+  <rect width="1600" height="900" fill="url(#halo)"/>
 </svg>

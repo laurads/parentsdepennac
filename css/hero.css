@@ -13,10 +13,12 @@
     display: none;
 }
 
+/* Le halo central est porté par hero-bg.svg : ce voile reste très léger
+   pour ne pas délaver la couronne de couleurs sur les bords. */
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .hero-shapes {
